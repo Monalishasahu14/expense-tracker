@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+    /* HSL Colors */
+    --primary-hue: 250;
+
+    /* Color Palette - Light */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-hover: #f1f5f9;
+
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+    --border: #e2e8f0;
+
+    --primary: hsl(var(--primary-hue), 85%, 60%);
+    --primary-hover: hsl(var(--primary-hue), 85%, 55%);
+
+    --radius: 16px;
+    --radius-sm: 8px;
+}
+
+.dark {
+    /* Color Palette - Dark */
+    --bg-main: #020617;
+    --bg-card: #0f172a;
+    --bg-hover: #1e293b;
+
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-light: #64748b;
+
+    --border: #1e293b;
+
+    --primary: hsl(var(--primary-hue), 85%, 65%);
+    --primary-hover: hsl(var(--primary-hue), 85%, 60%);
+}
+
+@theme {
+    --color-background: var(--bg-main);
+    --color-card: var(--bg-card);
+    --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
+    --color-border: var(--border);
+}
+
+/* Restoring base styles for global text color reset */
+@layer base {
+    body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-200 cursor-pointer text-sm;
+    }
+
+    .btn-primary {
+        @apply bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] shadow-sm hover:shadow-md hover:-translate-y-[1px];
+    }
+
+    .card {
+        @apply bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-sm transition-all duration-200;
+    }
+
+    .input {
+        @apply w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-main)] text-[var(--text-main)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all;
+    }
+}
